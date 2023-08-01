@@ -1,0 +1,82 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+}
+
+.list__item {
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid black;
+}
+
+.list__info {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 20px;
+}
+
+.todoContainer {
+  padding: 40px;
+  border: 1px solid black;
+  box-shadow: rgba(0, 0, 0, 0.445) 0 0 10px 2px;
+  width: 80%;
+}
+
+.wrapper__name {
+  padding: 20px;
+}
+.btn {
+  padding: 7px;
+  color: aliceblue;
+  background-color: rgba(0, 0, 0, 0.621);
+  border-radius: 2px;
+}
+.btn:hover {
+  background-color: coral;
+  color: black;
+  transform: translateX(2px);
+  transition: all 0.3s ease-in-out;
+}
+
+.btn__input:hover {
+  background-color: coral;
+  color: black;
+  transition: all 0.3s ease-in-out;
+}
+
+.list__name {
+  text-align: center;
+  padding: 7px;
+}
+
+.form__input {
+  height: 30px;
+  padding: 20px;
+  margin-right: 20px;
+}
+
+.title {
+  padding-bottom: 10px;
+}
+
+.input__btn {
+  display: flex;
+}
