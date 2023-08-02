@@ -1,11 +1,22 @@
 import { useSelector, useDispatch } from "react-redux";
 import { todosItem, toggleTodos } from "../Store";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import List from "./List";
 import "./list.css";
 function TodoList() {
   const [inputValue, setInputValue] = useState("");
   const dispatch = useDispatch();
+  function keyDownHandler(e) {
+    if (inputValue === "") {
+      return;
+    } else {
+      console.log(e);
+      if (e.key === "Enter") {
+        setInputValue("");
+        dispatch(todosItem(inputValue));
+      }
+    }
+  }
 
   return (
     <div className="todoContainer">
@@ -18,10 +29,18 @@ function TodoList() {
           type="text"
           placeholder="What to do?"
           className="form__input"
+          value={inputValue}
+          onKeyDown={keyDownHandler}
         />
         <button
           className="btn btn__input"
-          onClick={() => dispatch(todosItem(inputValue))}
+          onClick={() => {
+            if (inputValue === "") {
+              return;
+            }
+            setInputValue("");
+            return dispatch(todosItem(inputValue));
+          }}
         >
           Add todo item
         </button>
