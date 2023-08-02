@@ -6,6 +6,7 @@ function List() {
     return (
       <div className="list__item" key={object.id}>
         <input type="checkbox" />
+
         <div className="list__info">
           <div className="list__name">{object.title}</div>
         </div>
