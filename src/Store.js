@@ -1,4 +1,5 @@
 import { createStore } from "redux";
+import { devToolsEnhancer } from "@redux-devtools/extension";
 
 // Todos
 let numberId = 0;
@@ -53,7 +54,7 @@ const todosReducer = (state = [], action) => {
   }
 };
 
-export const store = createStore(todosReducer);
+export const store = createStore(todosReducer, devToolsEnhancer());
 
 // action creators
 export const todosItem = (title) => ({
