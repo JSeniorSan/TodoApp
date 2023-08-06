@@ -1,8 +1,7 @@
-import { useSelector, useDispatch } from "react-redux";
-import { todosItem, toggleTodos } from "../Store";
-
+import { useDispatch } from "react-redux";
+import { todosItem } from "../store/todos/todos-actions";
 import List from "./List";
-import "./list.css";
+import "./css/list.css";
 function TodoList() {
   const dispatch = useDispatch();
   const submitHandler = (e) => {

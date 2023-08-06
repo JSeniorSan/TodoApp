@@ -1,13 +1,21 @@
 import { useSelector, useDispatch } from "react-redux";
-import { deleteItem, switchTodos } from "../Store";
-
+import { deleteItem, switchTodos } from "../store/todos/todos-actions";
+import {
+  selectTodosReducer,
+  selectFilter,
+} from "../store/todos/todos-selectors";
+import { selectSetFilter } from "../store/filters/filters-selectors";
+import FilterList from "./FilterList";
 function List() {
-  const array = useSelector((state) => state);
+  const todosSelector = useSelector(selectTodosReducer);
+  const filterState = useSelector(selectSetFilter);
+  const array = useSelector((state) => {
+    return selectFilter(state, filterState);
+  });
 
   const dispatch = useDispatch();
 
   const listItems = array.map((object) => {
-    console.log(object);
     return (
       <div className="list__item" key={object.id}>
         <input
@@ -34,6 +42,7 @@ function List() {
 
   return (
     <div className="wrapper__list">
+      <FilterList />
       <ul className="list">{listItems}</ul>
     </div>
   );
