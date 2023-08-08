@@ -6,11 +6,12 @@ import {
 } from "../store/todos/todos-selectors";
 import { selectSetFilter } from "../store/filters/filters-selectors";
 import FilterList from "./FilterList";
+import { useParams } from "react-router-dom";
 function List() {
-  const todosSelector = useSelector(selectTodosReducer);
-  const filterState = useSelector(selectSetFilter);
+  const { filter } = useParams();
+
   const array = useSelector((state) => {
-    return selectFilter(state, filterState);
+    return selectFilter(state, filter);
   });
 
   const dispatch = useDispatch();

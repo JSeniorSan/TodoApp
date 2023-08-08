@@ -1,14 +1,13 @@
-import { ActiveFilter } from "../store/filters/filters-actions";
-import { useSelector, useDispatch } from "react-redux";
-import { selectSetFilter } from "../store/filters/filters-selectors";
-
+import { Link, useParams } from "react-router-dom";
 export default function FilterList() {
-  const dispatch = useDispatch();
-  const activeState = useSelector(selectSetFilter);
+  // сущность роутинга для получения данных от перехода по filter
+  const { filter: activeState = "all" } = useParams();
+
+  console.log(activeState);
   return (
     <div>
-      <button
-        onClick={() => dispatch(ActiveFilter("all"))}
+      <Link
+        to="/all"
         style={{
           color: activeState === "all" ? "green" : "black",
           backgroundColor: activeState === "all" ? "skyblue" : "white",
@@ -16,9 +15,9 @@ export default function FilterList() {
         className="btn"
       >
         AllNotes
-      </button>
-      <button
-        onClick={() => dispatch(ActiveFilter("active"))}
+      </Link>
+      <Link
+        to="/active"
         style={{
           color: activeState === "active" ? "green" : "black",
           backgroundColor: activeState === "active" ? "skyblue" : "white",
@@ -26,9 +25,9 @@ export default function FilterList() {
         className="btn"
       >
         activeComponents
-      </button>
-      <button
-        onClick={() => dispatch(ActiveFilter("completed"))}
+      </Link>
+      <Link
+        to="/completed"
         style={{
           color: activeState === "completed" ? "green" : "black",
           backgroundColor: activeState === "completed" ? "skyblue" : "white",
@@ -36,7 +35,7 @@ export default function FilterList() {
         className="btn"
       >
         complitedComponents
-      </button>
+      </Link>
     </div>
   );
 }

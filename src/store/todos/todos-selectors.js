@@ -1,6 +1,7 @@
 export const selectTodosReducer = (state) => state.todosReducer;
 export const selectFilter = (state, filter) => {
   switch (filter) {
+    // проверка для выбора фильтра
     default: {
       return state.todosReducer;
     }

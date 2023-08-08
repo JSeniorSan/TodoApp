@@ -1,7 +1,8 @@
 import { ADD_TODO, DELETE_TODO, SWITCH_TODO } from "./todos-constants";
 let numberId;
-
+// обработка экшенов для todo задач
 export const todosReducer = (state = [], action) => {
+  // обработка ключей для списка
   if (state.length === 0) {
     numberId = 0;
   } else {
