@@ -11,7 +11,7 @@ export default function FilterList() {
         onClick={() => dispatch(ActiveFilter("all"))}
         style={{
           color: activeState === "all" ? "green" : "black",
-          backgroundColor: "white",
+          backgroundColor: activeState === "all" ? "skyblue" : "white",
         }}
         className="btn"
       >
@@ -21,7 +21,7 @@ export default function FilterList() {
         onClick={() => dispatch(ActiveFilter("active"))}
         style={{
           color: activeState === "active" ? "green" : "black",
-          backgroundColor: "white",
+          backgroundColor: activeState === "active" ? "skyblue" : "white",
         }}
         className="btn"
       >
@@ -31,7 +31,7 @@ export default function FilterList() {
         onClick={() => dispatch(ActiveFilter("completed"))}
         style={{
           color: activeState === "completed" ? "green" : "black",
-          backgroundColor: "white",
+          backgroundColor: activeState === "completed" ? "skyblue" : "white",
         }}
         className="btn"
       >

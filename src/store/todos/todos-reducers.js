@@ -1,6 +1,14 @@
 import { ADD_TODO, DELETE_TODO, SWITCH_TODO } from "./todos-constants";
-let numberId = 0;
+let numberId;
+
 export const todosReducer = (state = [], action) => {
+  if (state.length === 0) {
+    numberId = 0;
+  } else {
+    numberId = state.length;
+    console.log(numberId);
+  }
+
   switch (action.type) {
     case ADD_TODO: {
       return [

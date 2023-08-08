@@ -1,11 +1,11 @@
 import App from "./App.jsx";
 import React from "react";
 import { Provider } from "react-redux";
-import { store } from "./store/index";
+import { configureStore } from "./store/index";
 export default function RootProviders() {
   return (
     <React.StrictMode>
-      <Provider store={store}>
+      <Provider store={configureStore()}>
         <App />
       </Provider>
     </React.StrictMode>
