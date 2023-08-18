@@ -1,10 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { deleteItem, switchTodos } from "../store/todos/todos-actions";
-import {
-  selectTodosReducer,
-  selectFilter,
-} from "../store/todos/todos-selectors";
-import { selectSetFilter } from "../store/filters/filters-selectors";
+import { selectFilter } from "../store/todos/todos-selectors";
+
 import FilterList from "./FilterList";
 import { useParams } from "react-router-dom";
 function List() {

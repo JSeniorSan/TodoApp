@@ -12,9 +12,8 @@ export default function FilterList() {
           color: activeState === "all" ? "green" : "black",
           backgroundColor: activeState === "all" ? "skyblue" : "white",
         }}
-        className="btn"
       >
-        AllNotes
+        All
       </Link>
       <Link
         to="/active"
@@ -22,9 +21,8 @@ export default function FilterList() {
           color: activeState === "active" ? "green" : "black",
           backgroundColor: activeState === "active" ? "skyblue" : "white",
         }}
-        className="btn"
       >
-        activeComponents
+        Active
       </Link>
       <Link
         to="/completed"
@@ -32,9 +30,8 @@ export default function FilterList() {
           color: activeState === "completed" ? "green" : "black",
           backgroundColor: activeState === "completed" ? "skyblue" : "white",
         }}
-        className="btn"
       >
-        complitedComponents
+        Complited
       </Link>
     </div>
   );
