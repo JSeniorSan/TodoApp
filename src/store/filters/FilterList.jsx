@@ -3,7 +3,6 @@ export default function FilterList() {
   // сущность роутинга для получения данных от перехода по filter
   const { filter: activeState = "all" } = useParams();
 
-  console.log(activeState);
   return (
     <div>
       <Link

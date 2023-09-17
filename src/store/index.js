@@ -1,34 +1,23 @@
-import { createStore, applyMiddleware } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 import { logger } from "redux-logger";
 import { rootReducer } from "./Root-reducer";
-import {
-  devToolsEnhancer,
-  composeWithDevTools,
-} from "@redux-devtools/extension";
-import { loadLocaleStorage, saveLocaleStorage } from "./locale-storage";
-import { throttle } from "lodash";
-export const configureStore = () => {
-  const middleware = [];
-  if (process.env.NODE_ENV === "development") {
-    middleware.push(logger);
-  }
+import { todosSlice } from "./todos/todos-slice";
+import { filtersSlice } from "./filters/filters-slice";
 
-  const loadState = loadLocaleStorage();
-  const store = createStore(
-    rootReducer,
-    loadState,
-    composeWithDevTools(applyMiddleware(...middleware))
-  );
-
-  // запись нового значения стора при его изменении, но с орграничением записи в 1с
-  store.subscribe(
-    throttle(() => {
-      return saveLocaleStorage({
-        // обновление состояния стора только todo параметров, без состояний фильтров
-        todosReducer: store.getState().todosReducer,
-      });
-    }, 1000)
-  );
-
-  return store;
-};
+export const store = configureStore({
+  reducer: {
+    todo: todosSlice.reducer,
+    filter: filtersSlice.reducer,
+  },
+  devTools: true,
+  middleware: (getDeafaultMiddleware) => getDeafaultMiddleware().concat(logger),
+  preloadedState: {
+    todo: [
+      {
+        id: 1,
+        title: "hi",
+        completed: false,
+      },
+    ],
+  },
+});

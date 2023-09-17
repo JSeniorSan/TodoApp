@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
-import { todosItem } from "../store/todos/todos-actions";
+import { add_todo, delete_todo, switch_todo } from "./todos-slice";
 import List from "./List";
-import "./css/list.css";
+import "../../Components/css/list.css";
 function TodoList() {
   const dispatch = useDispatch();
   const submitHandler = (e) => {
@@ -11,7 +11,7 @@ function TodoList() {
       return;
     }
 
-    dispatch(todosItem(e.target.title.value));
+    dispatch(add_todo(e.target.title.value));
     e.target.reset();
   };
 

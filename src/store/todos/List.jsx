@@ -1,15 +1,16 @@
 import { useSelector, useDispatch } from "react-redux";
-import { deleteItem, switchTodos } from "../store/todos/todos-actions";
-import { selectFilter } from "../store/todos/todos-selectors";
+import { delete_todo, switch_todo } from "./todos-slice";
+import { selectFilter, selectTodosReducer } from "./todos-slice";
 
-import FilterList from "./FilterList";
+import FilterList from "../filters/FilterList";
 import { useParams } from "react-router-dom";
 function List() {
   const { filter } = useParams();
 
   const array = useSelector((state) => {
-    return selectFilter(state, filter);
+    return selectFilter(state.todo, filter);
   });
+  console.log(array);
 
   const dispatch = useDispatch();
 
@@ -19,7 +20,7 @@ function List() {
         <input
           type="checkbox"
           checked={object.completed}
-          onChange={() => dispatch(switchTodos(object.id))}
+          onChange={() => dispatch(switch_todo(object.id))}
           className="checkbox"
         />
 
@@ -31,7 +32,10 @@ function List() {
             {object.title}
           </div>
         </div>
-        <button onClick={() => dispatch(deleteItem(object.id))} className="btn">
+        <button
+          onClick={() => dispatch(delete_todo(object.id))}
+          className="btn"
+        >
           удалить
         </button>
       </div>
